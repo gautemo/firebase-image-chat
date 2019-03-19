@@ -49,6 +49,7 @@ const app = new Vue({
       auth.onAuthStateChanged(user => {
         if (user !== null) {
           this.signedIn = true;
+          loadImages();
         } else {
           this.signedIn = false;
           ui.start("#firebaseui-auth-container", {
@@ -84,6 +85,5 @@ const app = new Vue({
       this.uploadImage(e.target.files[0])
     );
     this.signInUi();
-    loadImages();
   }
 });

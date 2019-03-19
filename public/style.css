@@ -115,3 +115,22 @@ img {
 .img-card {
   position: relative;
 }
+
+@media only screen and (max-width: 600px) {
+  h1 {
+    font-size: 2em;
+  }
+
+  p {
+    font-size: 1em;
+  }
+
+  [type="file"] + label {
+    font-size: 1em;
+    padding: 5px 50px;
+  }
+
+  .images {
+    padding: 10px;
+  }
+}
