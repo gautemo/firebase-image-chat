@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Image Chat</title>
+    <meta name="author" content="Gaute Meek Olsen" />
+
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css?family=Lobster"
+      rel="stylesheet"
+    />
+    <script src="https://www.gstatic.com/firebasejs/5.9.0/firebase.js"></script>
+    <script>
+      // Initialize Firebase. Replace with your own firebase project
+      var config = {
+        apiKey: "AIzaSyCTIW1rSp-BTkHcWmoZvydBJ8Bu0Eiwv00",
+        authDomain: "fir-image-chat.firebaseapp.com",
+        databaseURL: "https://fir-image-chat.firebaseio.com",
+        projectId: "fir-image-chat",
+        storageBucket: "fir-image-chat.appspot.com",
+        messagingSenderId: "999362970044"
+      };
+      firebase.initializeApp(config);
+    </script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css"
+    />
+  </head>
+
+  <body>
+    <header>
+      <h1>Chat</h1>
+      <p>One image says more than a thousand words</p>
+    </header>
+    <div id="app">
+      <div class="images scrollbar">
+        <div class="img-card" v-for="img in images">
+          <img :src="img.src" />
+          <div class="btns">
+            <span @click="like(img)">{{ img.likes }}😍</span>
+            <span @click="report(img)">🔞</span>
+          </div>
+        </div>
+      </div>
+      <footer>
+        <div v-show="signedIn">
+          <input type="file" accept="image/*" id="file" />
+          <label for="file" class="btn-1">upload image</label>
+        </div>
+        <div v-show="!signedIn">
+          <div id="firebaseui-auth-container"></div>
+        </div>
+      </footer>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
