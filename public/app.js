@@ -22,6 +22,8 @@ const loadImages = () => {
             app.images[i].likes = change.doc.data().likes;
           }
         }
+      }else if(change.type === "removed"){
+        app.images.splice(app.images.findIndex(i => i.id === change.doc.id), 1);
       }
     }
   });
