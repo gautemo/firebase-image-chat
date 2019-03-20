@@ -1,14 +1,5 @@
-# firebase-image-chat
+const functions = require('firebase-functions');
 
-## Step One
-People are uploading a lot of bad images. Let's not allow any user signing up with temporary email providers.
-
-## TODO
-* Run `firebase init functions`
-* `firebase deploy --only functions`
-
-## Code
-```
 const admin = require('firebase-admin');
 admin.initializeApp();
 
@@ -20,4 +11,3 @@ exports.sendVerifyEmail = functions.auth.user().onCreate((user) => {
         auth.deleteUser(user.uid);
     }
 });
-```
