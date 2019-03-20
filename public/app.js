@@ -3,7 +3,7 @@ const db = firebase.firestore();
 const dbImages = db.collection("images");
 
 const loadImages = () => {
-  dbImages.orderBy("created_at").onSnapshot(async function(snapshot) {
+  dbImages.orderBy("created_at").onSnapshot(async function (snapshot) {
     for (const change of snapshot.docChanges()) {
       if (change.type === "added") {
         const url = await storageRef
@@ -22,6 +22,8 @@ const loadImages = () => {
             app.images[i].likes = change.doc.data().likes;
           }
         }
+      }else if(change.type === "removed"){
+        app.images.splice(app.images.findIndex(i => i.id === change.doc.id), 1);
       }
     }
   });
@@ -42,7 +44,7 @@ const app = new Vue({
         created_at: new Date().getTime()
       });
     },
-    signInUi: function() {
+    signInUi: function () {
       const auth = firebase.auth();
       const ui = new firebaseui.auth.AuthUI(auth);
 
@@ -62,24 +64,21 @@ const app = new Vue({
         }
       });
     },
-    like: function(img) {
+    like: function (img) {
       const imgRef = dbImages.doc(img.id);
       db.runTransaction(async transaction => {
         const doc = await transaction.get(imgRef);
-        transaction.update(imgRef, { likes: doc.data().likes + 1 });
+        transaction.update(imgRef, {
+          likes: doc.data().likes + 1
+        });
       });
     },
-    report: function(img) {
-      img.reported.push({
-        date: new Date().getTime(),
-        user: firebase.auth().currentUser.uid
-      });
-      dbImages.doc(img.id).update({
-        reported: img.reported
-      });
+    report: function (img) {
+      const report = firebase.functions().httpsCallable('report');
+      report({ id: img.id });
     }
   },
-  mounted: function() {
+  mounted: function () {
     const fileInput = document.getElementById("file");
     fileInput.addEventListener("change", e =>
       this.uploadImage(e.target.files[0])
