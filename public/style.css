@@ -101,6 +101,14 @@ img {
   top: 2px;
 }
 
+button.sign-out{
+  font-family: "Lobster", cursive;
+  margin-left: 50px;
+  background-color: #ff2600;
+  box-shadow: 0 6px #ff1a1a;
+  float: right;
+}
+
 .btns {
   display: flex;
   justify-content: center;
