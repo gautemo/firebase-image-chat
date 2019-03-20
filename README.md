@@ -21,3 +21,7 @@ exports.sendVerifyEmail = functions.auth.user().onCreate((user) => {
     }
 });
 ```
+
+## DOCS
+[Firebase Functions](https://firebase.google.com/docs/functions/)
+[Firebase Authentication triggers](https://firebase.google.com/docs/functions/auth-events)
