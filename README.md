@@ -15,3 +15,6 @@ This is a tutorial on how Firebase Functions. Embrace the serverless service Fir
 * `$ firebase login`
 * `$ firebase init`
 * `$ firebase deploy`
+
+## Step One
+[Step 1](https://github.com/gautemo/firebase-image-chat/tree/step-one)
