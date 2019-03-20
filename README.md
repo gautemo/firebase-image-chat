@@ -18,3 +18,5 @@ This is a tutorial on how Firebase Functions. Embrace the serverless service Fir
 
 ## View the README file for each branch
 [Step 1](https://github.com/gautemo/firebase-image-chat/tree/step-one)
+[Step 2](https://github.com/gautemo/firebase-image-chat/tree/step-two)
+[Step 3](https://github.com/gautemo/firebase-image-chat/tree/step-three)
