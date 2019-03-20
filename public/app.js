@@ -38,11 +38,6 @@ const app = new Vue({
   methods: {
     uploadImage: file => {
       storageRef.child(`images/${file.name}`).put(file);
-      dbImages.doc(file.name).set({
-        reported: [],
-        likes: 0,
-        created_at: new Date().getTime()
-      });
     },
     signInUi: function () {
       const auth = firebase.auth();
@@ -63,6 +58,9 @@ const app = new Vue({
           });
         }
       });
+    },
+    signOut: function(){
+      firebase.auth().signOut();
     },
     like: function (img) {
       const imgRef = dbImages.doc(img.id);

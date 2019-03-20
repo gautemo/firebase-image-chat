@@ -41,3 +41,12 @@ exports.report = functions.https.onCall((data, context) => {
     });
 });
 
+exports.addFirestoreRef = functions.storage.object().onFinalize((object) => {
+    const filename = object.name.replace('images/', '');
+    const dbImages = admin.firestore().collection("images");
+    return dbImages.doc(filename).set({
+        reported: [],
+        likes: 0,
+        created_at: new Date().getTime()
+      });
+});
