@@ -53,6 +53,7 @@
         <div v-show="signedIn">
           <input type="file" accept="image/*" id="file" />
           <label for="file" class="btn-1">upload image</label>
+          <button class="sign-out" @click="signOut">Sign out</button>
         </div>
         <div v-show="!signedIn">
           <div id="firebaseui-auth-container"></div>
