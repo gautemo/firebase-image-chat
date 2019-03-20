@@ -64,6 +64,9 @@ const app = new Vue({
         }
       });
     },
+    signOut: function(){
+      firebase.auth().signOut();
+    },    
     like: function (img) {
       const imgRef = dbImages.doc(img.id);
       db.runTransaction(async transaction => {
