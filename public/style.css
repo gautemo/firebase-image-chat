@@ -79,7 +79,7 @@ img {
   width: 0;
 }
 
-[type="file"] + label {
+[type="file"] + label, .sign-out {
   border: none;
   border-radius: 5px;
   color: #fff;
@@ -96,7 +96,7 @@ img {
   box-shadow: 0 6px #ff591a;
 }
 
-[type="file"] + label:hover {
+[type="file"] + label:hover, .sign-out:hover {
   box-shadow: 0 3px #ff591a;
   top: 2px;
 }
