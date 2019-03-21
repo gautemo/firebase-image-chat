@@ -1,6 +1,6 @@
 # firebase-image-chat
 
-## Step Two
+## Step Three
 A problem is that the client is makeing two requests when uploading images.
 And uploading a image might be slower than the firestore data. 
 Which means you need to refresh the page to see the image. Let's create a function that handles the firestore data.
